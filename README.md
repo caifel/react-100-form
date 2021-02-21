@@ -47,7 +47,7 @@ const { handleSubmit, isValid, values } = useForm(initialValues, validate);
 
 ```javascript
 const {
-	commit, // Set current state as inital state
+	commit, // Set current values as inital state
 	errorMap,
 	handleBlur,
 	handleChange,

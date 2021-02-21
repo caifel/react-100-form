@@ -1,5 +1,5 @@
 {
-    "name": "react-typescript-npm-boilerplate",
+    "name": "gendecoder-package-builder",
     "version": "0.1.0",
     "private": true,
     "dependencies": {

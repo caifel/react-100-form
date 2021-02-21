@@ -25,10 +25,10 @@ const validate = (values, errorMap) => {
 	else delete errorMap.name;
 	return errorMap;
 }
-const onSubmit = (values) => { /*your submit logic*/ };
+const doSubmit = (values) => { /*your submit logic*/ };
 const { handleSubmit, isValid, values } = useForm(initialValues, validate);
 ...	...
-<form onSubmit={handleSubmit(onSubmit)}>
+<form onSubmit={handleSubmit(doSubmit)}>
 ...	...
 <input
 	id="name"

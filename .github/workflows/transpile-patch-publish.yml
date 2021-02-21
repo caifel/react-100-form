@@ -27,6 +27,9 @@ jobs:
             - name: Transpile typescript to javascript and pack in dist folder
               working-directory: ./src/package
               run: scripts/transpile-and-move.sh
+            
+            - name: Move README from root dir to package dir
+              run: mv README.md src/package
 
             - name: Point to "index.js" intead to "index.ts"
               working-directory: ./src/package

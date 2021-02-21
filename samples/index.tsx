@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm } from '../dist/index';
+import { useForm } from '../dist';
 import * as constants from './constants';
 import './styles.css';
 import { validate } from './utils';

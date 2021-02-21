@@ -68,7 +68,7 @@ const useForm = (initialValues: TKeyValue = {}, validate: (values: TKeyValue) =>
     /**
      * @param {object} e => Form's event object
      */
-    function handleBlur(e: React.ChangeEvent<HTMLInputElement>) {
+    function handleBlur(e: React.FocusEvent<HTMLInputElement>) {
         const { name } = getUsefulEventData(e)!;
         setFieldTouched(name);
     }

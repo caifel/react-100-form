@@ -1,0 +1,29 @@
+{
+    "name": "react-100-form",
+    "version": "0.1.4",
+    "description": "Simple form utility made using react hooks",
+    "main": "dist/index.tsx",
+    "types": "dist/index.d.ts",
+    "keywords": [
+        "form",
+        "react",
+        "100",
+        "hundred",
+        "hooks",
+        "package",
+        "utility"
+    ],
+    "peerDependencies": {
+        "react": "^16.8.0",
+        "react-dom": "^16.8.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/GenDecoder/react-100-form"
+    },
+    "bugs": {
+        "url": "https://github.com/GenDecoder/react-100-form/issues"
+    },
+    "author": "Mario Medrano Maldonado <mario.medrano.maldonado@gmail.com>",
+    "license": "MIT"
+}

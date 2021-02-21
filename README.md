@@ -25,7 +25,10 @@ const validate = (values, errorMap) => {
 	else delete errorMap.name;
 	return errorMap;
 }
-const { values } = useForm(initialValues, validate);
+const onSubmit = (values) => { /*your submit logic*/ };
+const { handleSubmit, isValid, values } = useForm(initialValues, validate);
+...	...
+<form onSubmit={handleSubmit(onSubmit)}>
 ...	...
 <input
 	id="name"
@@ -35,13 +38,16 @@ const { values } = useForm(initialValues, validate);
 	type="text"
 	value={values["name"]}
 />
+{errorMap.name && <span>{errorMap.name}</span>}
+...	...
+<button type="submit" disabled={!isValid}>Submit</button>
 ```
 
 ## All features
 
 ```javascript
 const {
-	commit,
+	commit, // Set current state as inital state
 	errorMap,
 	handleBlur,
 	handleChange,
@@ -49,7 +55,7 @@ const {
 	isDirty,
 	isSubmitting,
 	isValid,
-	rollBack,
+	rollBack, // Restore to initial state or to last committed state
 	touchedMap,
 	values,
 } = useForm(
@@ -60,4 +66,4 @@ const {
 
 ## Author
 
-Mario Medrano Maldonado <mario.medrano.maldonado@gmail.com>
+Mario Medrano Maldonado **(Gendecoder)** <mario.medrano.maldonado@gmail.com>

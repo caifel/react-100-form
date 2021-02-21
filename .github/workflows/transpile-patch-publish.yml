@@ -2,9 +2,9 @@ name: NPM publish
 
 on:
     push:
-        branches: [main]
+        branches: [test]
     pull_request:
-        branches: [main]
+        branches: [test]
 
 jobs:
     transpile-patch-publish:
@@ -16,7 +16,10 @@ jobs:
             - name: Use Node.js 12
               uses: actions/setup-node@v1
               with:
-                node-version: 12
+                  node-version: 12
+
+            - name: Go to Package directory
+              run: cd src
 
             - name: Install temporal dependencies
               run: yarn add --dev typescript @types/react @types/react-dom

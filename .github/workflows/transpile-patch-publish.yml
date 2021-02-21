@@ -10,6 +10,10 @@ jobs:
     transpile-patch-publish:
         runs-on: ubuntu-latest
 
+        defaults:
+            run:
+                working-directory: ./src/package
+
         steps:
             - uses: actions/checkout@v2
 
@@ -17,9 +21,6 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: 12
-
-            - name: Go to Package directory
-              run: cd src/package
 
             - name: Install temporal dependencies
               run: yarn add --dev typescript @types/react @types/react-dom

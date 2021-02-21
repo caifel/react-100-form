@@ -1,6 +1,6 @@
 {
     "name": "react-100-form",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "Simple form utility made using react hooks",
     "main": "dist/index.ts",
     "types": "dist/index.d.ts",

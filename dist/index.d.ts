@@ -1,1 +1,1 @@
-declare module 'react-100-form';
+declare module 'react-100-form' {}

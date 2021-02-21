@@ -1,6 +1,6 @@
 __tests__
 .github
 scripts
-dist/*.ts
-dist/*.tsx
+dist/index.ts
+dist/useForm.ts
 samples

@@ -8,6 +8,12 @@ YES! It has most features you might need when dealing with form.
 * [**Look the code - all features**](https://codesandbox.io/s/practical-faraday-5cnig?file=/src/samples/index.tsx:36-43 "Look at the sample code making use of all features") or **Refer to the** `samples` **folder** to get inspired
 *  (obviously) It uses **TypeScript**
 
+✅ Zero dependencies (better bundle size)
+
+✅ Only peer dependencies: React
+
+✅ 💥 [**3.4k gzipped**](https://bundlephobia.com/result?p=react-100-form@0.0.7) 💥
+
 ## Installation
 
 `npm install react-100-form`

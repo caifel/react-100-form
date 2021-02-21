@@ -1,6 +1,6 @@
 # 🎯 React 100 Form
 
-YES! As the name says, only **100** lines of code for a powerful **CUSTOM HOOK**.
+YES! As the name says, only 💯 lines of code for a powerful **CUSTOM HOOK**.
 
 YES! It has most features you might need when dealing with form.
 

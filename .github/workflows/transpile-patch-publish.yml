@@ -2,9 +2,9 @@ name: NPM publish
 
 on:
     push:
-        branches: [test]
+        branches: [main]
     pull_request:
-        branches: [test]
+        branches: [main]
 
 jobs:
     transpile-patch-publish:
@@ -17,9 +17,7 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: 12
-
-            # - name: Install temporal dependencies
-            #   run: yarn add --dev typescript @types/react @types/react-dom
+           
             - name: Install Dependencies
               run: yarn
 
@@ -30,12 +28,9 @@ jobs:
               working-directory: ./src/package
               run: scripts/transpile-and-move.sh
 
-            - name: Point to "index.js" intead to "index.tsx"
+            - name: Point to "index.js" intead to "index.ts"
               working-directory: ./src/package
               run: perl -pi -e "s/dist\/index.ts/dist\/index.js/g" package.json
-
-            # - name: Remove temporal dependencies
-            #   run: yarn remove typescript @types/react @types/react-dom
 
             - id: publish
               uses: JS-DevTools/npm-publish@v1

@@ -1,0 +1,73 @@
+.container {
+    color: #333;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 0 1rem;
+}
+
+form {
+    background-color: white;
+    border: solid 1px lightgray;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.action-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+button {
+    margin-left: 1rem;
+    font-size: 12px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    border-bottom: solid 1px lightgray;
+    padding-bottom: 1rem;
+}
+
+.field > label {
+    text-transform: capitalize;
+    font-weight: bolder;
+}
+
+.info-container {
+    display: flex;
+    margin-top: 0.5rem;
+}
+
+.info-container > .info-item:first-child {
+    margin-left: 0 !important;
+}
+
+.info-item {
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+}
+
+.info-item > span:first-child {
+    padding: 3px 5px;
+    background-color: #0578ee;
+    color: white;
+}
+
+.info-item > span:last-child {
+    background-color: white;
+    box-sizing: border-box;
+    margin-left: 0.5rem;
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: solid 1px lightgray;
+}
+
+.field > input {
+    flex: 1;
+    margin-top: 0.5rem;
+}

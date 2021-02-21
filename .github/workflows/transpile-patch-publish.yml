@@ -10,10 +10,6 @@ jobs:
     transpile-patch-publish:
         runs-on: ubuntu-latest
 
-        defaults:
-            run:
-                working-directory: ./src/package
-
         steps:
             - uses: actions/checkout@v2
 
@@ -22,17 +18,24 @@ jobs:
               with:
                   node-version: 12
 
-            - name: Install temporal dependencies
-              run: yarn add --dev typescript @types/react @types/react-dom
+            # - name: Install temporal dependencies
+            #   run: yarn add --dev typescript @types/react @types/react-dom
+            - name: Install Dependencies
+              run: yarn
+
+            - name: Run Tests
+              run: yarn test
 
             - name: Transpile typescript to javascript and pack in dist folder
+              working-directory: ./src/package
               run: scripts/transpile-and-move.sh
 
             - name: Point to "index.js" intead to "index.tsx"
+              working-directory: ./src/package
               run: perl -pi -e "s/dist\/index.ts/dist\/index.js/g" package.json
 
-            - name: Remove temporal dependencies
-              run: yarn remove typescript @types/react @types/react-dom
+            # - name: Remove temporal dependencies
+            #   run: yarn remove typescript @types/react @types/react-dom
 
             - id: publish
               uses: JS-DevTools/npm-publish@v1

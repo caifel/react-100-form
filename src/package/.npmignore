@@ -1,5 +1,6 @@
 __tests__
 .github
 scripts
-dist/*.[ts,tsx]
+dist/*.ts
+dist/*.tsx
 samples

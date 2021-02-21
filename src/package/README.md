@@ -12,7 +12,7 @@ YES! It has most features you might need when dealing with form.
 
 ✅ Only peer dependencies: React
 
-✅ 💥 [**3.4k gzipped**](https://bundlephobia.com/result?p=react-100-form@0.0.7) 💥
+✅ 💥 [**1.7k gzipped**](https://bundlephobia.com/result?p=react-100-form@0.0.7) 💥
 
 ## Installation
 

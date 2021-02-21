@@ -2,8 +2,8 @@ import { TKeyValue } from "./type";
 
 declare module 'react-100-form' {
     export function useForm(
-        values: any,
-        validate: (values: object, erroMap: object) => object
+        values?: any,
+        validate?: (values: object, erroMap: object) => object
     ): {
         commit: (values: object) => void;
         errorMap: TKeyValue;

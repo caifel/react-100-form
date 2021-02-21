@@ -17,7 +17,7 @@ function getUsefulEventData(e: React.ChangeEvent<HTMLInputElement>) {
     }
 }
 
-const useForm = (initialValues: TKeyValue = {}, validate: (values: TKeyValue) => TKeyValue) => {
+const useForm = (initialValues: TKeyValue = {}, validate?: (values: TKeyValue) => TKeyValue) => {
     const [commitedValues, setCommitedValues] = useState<TKeyValue>(initialValues);
     const [errorMap, setErrorMap] = useState<TKeyValue>({});
     const [isDirty, setIsDirty] = useState<boolean>(false);

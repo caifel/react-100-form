@@ -1,5 +1,5 @@
 import { useState, useEffect, ErrorInfo } from 'react';
-import { TKeyValue } from './type';
+import { TKeyValue, TUseForm } from './type';
 
 function logError(err: ErrorInfo) {
     console.error('An Event-Object must be passed to handleChange, handleBlur and handleSubmit', [err]);
@@ -17,7 +17,7 @@ function getUsefulEventData(e: React.ChangeEvent<HTMLInputElement>) {
     }
 }
 
-const useForm = (initialValues: TKeyValue = {}, validate?: (values: TKeyValue) => TKeyValue) => {
+const useForm: TUseForm = (initialValues = {}, validate) => {
     const [commitedValues, setCommitedValues] = useState<TKeyValue>(initialValues);
     const [errorMap, setErrorMap] = useState<TKeyValue>({});
     const [isDirty, setIsDirty] = useState<boolean>(false);
@@ -26,12 +26,14 @@ const useForm = (initialValues: TKeyValue = {}, validate?: (values: TKeyValue) =
     const [touchedMap, setTouchedMap] = useState<TKeyValue>({});
     const [values, setValues] = useState<TKeyValue>(initialValues);
 
-    useEffect(() => {
-        const errors = validate ? validate(values) : {};
+    const calculate = () => {
+        const errors = typeof validate === 'function' ? validate(values) : {};
         setErrorMap(errors);
         setIsDirty(JSON.stringify(commitedValues) !== JSON.stringify(values));
-        setIsValid(Object.keys(errors).length === 0);
-    }, [commitedValues, values, validate]);
+        setIsValid(!Object.keys(errors).find(key => errors[key]));
+    }
+
+    useEffect(calculate, [commitedValues, values, validate]);
 
     /**
      * @param {object} values => key/value pairs

@@ -43,17 +43,18 @@ const { handleSubmit, isValid, values } = useForm(initialValues, validate);
 	onBlur={handleBlur}
 	onChange={handleChange}
 	type="text"
-	value={values["name"]}
+	value={values.name}
 />
+{errorMap.name && <span>{errorMap.name}</span>}
 <input
 	id="accept"
 	name="accept"
 	onBlur={handleBlur}
 	onChange={handleChange}
 	type="checkbox"
-	value={values["accept"]}
+	value={values.accept}
 />
-{errorMap.name && <span>{errorMap.name}</span>}
+{errorMap.accepted && <span>{errorMap.accepted}</span>}
 ...	...
 <button type="submit" disabled={!isValid}>Submit</button>
 ```

@@ -12,7 +12,7 @@ YES! It has most features you might need when dealing with form.
 
 ✅ Only peer dependencies: React
 
-✅ 💥 [**1.7k gzipped**](https://bundlephobia.com/result?p=react-100-form@0.0.7) 💥
+✅ 💥 [**1.6k gzipped**](https://bundlephobia.com/result?p=react-100-form@0.1.7) 💥
 
 ## Installation
 
@@ -25,10 +25,11 @@ or
 ## Simple Usage
 
 ```javascript
-const initialValues = {name: ''};
-const validate = (values, errorMap) => {
-	if (values.name === '')  errorMap.name = 'Required';
-	else delete errorMap.name;
+const initialValues = {name: '', accepted: false};
+const validate = (values) => {
+	const errorMap = {};
+	errorMap.name = values.name === '' && 'Required';
+	errorMap.accepted = !values.accepted && 'Should be checked';
 	return errorMap;
 }
 const doSubmit = (values) => { /*your submit logic*/ };
@@ -43,6 +44,14 @@ const { handleSubmit, isValid, values } = useForm(initialValues, validate);
 	onChange={handleChange}
 	type="text"
 	value={values["name"]}
+/>
+<input
+	id="accept"
+	name="accept"
+	onBlur={handleBlur}
+	onChange={handleChange}
+	type="checkbox"
+	value={values["accept"]}
 />
 {errorMap.name && <span>{errorMap.name}</span>}
 ...	...

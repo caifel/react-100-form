@@ -46,6 +46,7 @@ const { handleSubmit, isValid, values } = useForm(initialValues, validate);
 	value={values.name}
 />
 {errorMap.name && <span>{errorMap.name}</span>}
+...	...
 <input
 	id="accept"
 	name="accept"

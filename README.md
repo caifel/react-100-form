@@ -33,7 +33,7 @@ const validate = (values) => {
 	return errorMap;
 }
 const doSubmit = (values) => { /*your submit logic*/ };
-const { handleSubmit, isValid, values } = useForm(initialValues, validate);
+const { errorMap, handleSubmit, isValid, values } = useForm(initialValues, validate);
 ...	...
 <form onSubmit={handleSubmit(doSubmit)}>
 ...	...

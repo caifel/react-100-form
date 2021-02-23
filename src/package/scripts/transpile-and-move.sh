@@ -9,7 +9,7 @@ echo "2. Transpile Typescript to Javascript"
     tsc
     # A "lib" folder with the transpiled files was generated
 echo "3. Move all transpiled files to its final destination"
-    mv lib/* ../dist
+    cp -R lib/* ../dist
 echo "4. Remove no longer needed files/folders"
     rm -rf lib
 echo "5. Process complete!"

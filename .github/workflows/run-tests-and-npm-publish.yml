@@ -1,13 +1,9 @@
-name: NPM publish
+name: Run Tests and NPM publish
 
-on:
-    push:
-        branches: [main]
-    pull_request:
-        branches: [main]
+on: [workflow_dispatch]
 
 jobs:
-    transpile-patch-publish:
+    test-transpile-publish:
         runs-on: ubuntu-latest
 
         steps:
@@ -17,7 +13,7 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: 12
-           
+
             - name: Install Dependencies
               run: yarn
 
@@ -27,7 +23,7 @@ jobs:
             - name: Transpile typescript to javascript and pack in dist folder
               working-directory: ./src/package
               run: scripts/transpile-and-move.sh
-            
+
             - name: Move README from root dir to package dir
               run: mv README.md src/package
 

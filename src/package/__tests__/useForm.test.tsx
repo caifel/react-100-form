@@ -1,6 +1,6 @@
 import {  shallow, ShallowWrapper } from 'enzyme';
 import React from 'react';
-import { useForm } from '../dist';
+import { useForm } from 'react-100-form';
 
 const initialValues = { name: '' };
 const Form = () => {

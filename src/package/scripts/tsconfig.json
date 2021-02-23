@@ -21,6 +21,6 @@
         "sourceMap": false,
     },
     "include": [
-        "../dist"
+        "../dist/*"
     ]
 }

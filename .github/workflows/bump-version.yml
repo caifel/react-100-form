@@ -1,0 +1,44 @@
+name: 'Bump Version'
+
+on:
+    push:
+        branches:
+            - 'main'
+
+jobs:
+    bump-version:
+        name: 'Bump Version on main'
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: 'Checkout source code'
+              uses: 'actions/checkout@v2'
+            - name: 'cat package.json'
+              run: cat ./src/package/package.json
+            - name: 'Setup Node.js'
+              uses: 'actions/setup-node@v1'
+              with:
+                  node-version: 12
+            - name: 'Automated Version Bump'
+              id: version-bump
+              uses: 'phips28/gh-action-bump-version@master'
+              with:
+                  minor-wording: 'feature'
+                  major-wording: 'story'
+                  rc-wording: 'epic'
+                  skip-tag:  'true'
+              env:
+                  GITHUB_TOKEN: ${{ secrets.FOR_ACTIONS }}
+                  PACKAGEJSON_DIR: 'src/package'
+            - name: 'cat package.json'
+              run: cat ./src/package/package.json
+            - name: 'Output Step'
+              env:
+                  NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
+              run: echo "new tag $NEW_TAG"
+          
+            - name: Invoke workflow without inputs
+              uses: benc-uk/workflow-dispatch@v1
+              with:
+                workflow: 'Run Tests and NPM publish'
+                token: ${{ secrets.FOR_ACTIONS }}

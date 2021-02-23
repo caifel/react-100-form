@@ -1,5 +1,4 @@
 import { useState, useEffect, ErrorInfo } from 'react';
-import { TKeyValue, TUseForm } from './type';
 
 function logError(err: ErrorInfo) {
     console.error('An Event-Object must be passed to handleChange, handleBlur and handleSubmit', [err]);
@@ -17,28 +16,28 @@ function getUsefulEventData(e: React.ChangeEvent<HTMLInputElement>) {
     }
 }
 
-const useForm: TUseForm = (initialValues = {}, validate) => {
-    const [commitedValues, setCommitedValues] = useState<TKeyValue>(initialValues);
-    const [errorMap, setErrorMap] = useState<TKeyValue>({});
-    const [isDirty, setIsDirty] = useState<boolean>(false);
-    const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-    const [isValid, setIsValid] = useState<boolean>(false);
-    const [touchedMap, setTouchedMap] = useState<TKeyValue>({});
-    const [values, setValues] = useState<TKeyValue>(initialValues);
+const useForm = (initialValues = {}, validate?: any) => {
+    const [commitedValues, setCommitedValues] = useState(initialValues);
+    const [errorMap, setErrorMap] = useState({});
+    const [isDirty, setIsDirty] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isValid, setIsValid] = useState(false);
+    const [touchedMap, setTouchedMap] = useState({});
+    const [values, setValues] = useState(initialValues);
 
     const calculate = () => {
         const errors = typeof validate === 'function' ? validate(values) : {};
         setErrorMap(errors);
         setIsDirty(JSON.stringify(commitedValues) !== JSON.stringify(values));
-        setIsValid(!Object.keys(errors).find(key => errors[key]));
-    }
+        setIsValid(!Object.keys(errors).find((key) => errors[key]));
+    };
 
     useEffect(calculate, [commitedValues, values, validate]);
 
     /**
      * @param {object} values => key/value pairs
      */
-    function commit(values: TKeyValue) {
+    function commit(values: any) {
         setCommitedValues(values);
         setValues(values);
         setTouchedMap({});
@@ -60,16 +59,10 @@ const useForm: TUseForm = (initialValues = {}, validate) => {
     function setFieldTouched(name: string) {
         setTouchedMap({ ...touchedMap, [name]: true });
     }
-    /**
-     * @param {object} e => Input's event object
-     */
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         const { name, value } = getUsefulEventData(e)!;
         setValue(name, value);
     }
-    /**
-     * @param {object} e => Form's event object
-     */
     function handleBlur(e: React.FocusEvent<HTMLInputElement>) {
         const { name } = getUsefulEventData(e)!;
         setFieldTouched(name);
@@ -77,7 +70,7 @@ const useForm: TUseForm = (initialValues = {}, validate) => {
     /**
      * @param {function} callback => Normal/Async function that will be passed with the "values"
      */
-    function handleSubmit(callback: (values: TKeyValue) => void) {
+    function handleSubmit(callback: (values: any) => void) {
         return async (e: React.FormEvent<HTMLFormElement>) => {
             try {
                 e.preventDefault();

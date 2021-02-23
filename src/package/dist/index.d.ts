@@ -1,5 +1,5 @@
-import { TUseForm } from "./type";
-
+import { TResponse, TValidate } from './type';
 declare module 'react-100-form' {
-    export const useForm: TUseForm;
+    function useForm(initialValues: any, validate?: TValidate<any>): TResponse<any>;
+    function useForm<S = any>(initialValues: S, validate?: TValidate<S>): TResponse<S>;
 }

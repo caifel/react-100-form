@@ -28,7 +28,7 @@ jobs:
                   rc-wording: 'epic'
                   skip-tag:  'true'
               env:
-                  GITHUB_TOKEN: ${{ secrets.FOR_ACTIONS }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   PACKAGEJSON_DIR: 'src/package'
             - name: 'cat package.json'
               run: cat ./src/package/package.json

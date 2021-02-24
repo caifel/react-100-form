@@ -8,9 +8,9 @@ YES! It has most features you might need when dealing with form.
 * [**Look the code - all features**](https://codesandbox.io/s/practical-faraday-5cnig?file=/src/samples/index.tsx:36-43 "Look at the sample code making use of all features") or **Refer to the** `samples` **folder** to get inspired
 *  (Obviously) It uses **TypeScript**
 
-✅ Zero dependencies (better bundle size)
+✅ Zero dependencies (excelent bundle size)
 
-✅ Only peer dependencies: React
+✅ Only peer dependency: **React**
 
 ✅ 💥 [**1.6k gzipped**](https://bundlephobia.com/result?p=react-100-form@0.1.7) 💥
 
@@ -32,13 +32,17 @@ const validate = (values) => {
 	errorMap.accepted = !values.accepted && 'Should be checked';
 	return errorMap;
 }
-const doSubmit = (values) => { /*your submit logic*/ };
-const { errorMap, handleSubmit, isValid, values } = useForm(initialValues, validate);
+const doSubmit = (values) => { /* your submit logic */ };
+const {
+	errorMap,
+	handleSubmit,
+	isValid,
+	values
+} = useForm(initialValues, validate);
 ...	...
 <form onSubmit={handleSubmit(doSubmit)}>
 ...	...
 <input
-	id="name"
 	name="name"
 	onBlur={handleBlur}
 	onChange={handleChange}
@@ -48,12 +52,11 @@ const { errorMap, handleSubmit, isValid, values } = useForm(initialValues, valid
 {errorMap.name && <span>{errorMap.name}</span>}
 ...	...
 <input
-	id="accept"
-	name="accept"
+	name="accepted"
 	onBlur={handleBlur}
 	onChange={handleChange}
 	type="checkbox"
-	value={values.accept}
+	value={values.accepted}
 />
 {errorMap.accepted && <span>{errorMap.accepted}</span>}
 ...	...

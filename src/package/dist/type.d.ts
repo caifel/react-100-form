@@ -10,6 +10,8 @@ export type TResponse<T> = {
     isSubmitting: boolean;
     isValid: boolean;
     rollBack: () => void;
+    setFieldTouched: (string) => void;
+    setValue: (string, any) => void;
     touchedMap: Partial<T>;
     values: T;
 };
